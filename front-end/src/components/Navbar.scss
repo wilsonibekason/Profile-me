@@ -109,9 +109,9 @@
         box-shadow: 0 0 20px rgba(168, 168, 168, 0.45);
 
         svg{
-            width: 70px;
-            height: 70px;
-            color: var(--secondary-color);
+            width: 30px;
+            height: 30px;
+            color: var(--secondary-color);  
             margin: .5rem 1rem;
         }
 
@@ -129,7 +129,26 @@
 
             li{
                 margin: 1rem;
+                a{
+                    color: var(--grey-color);
+                    text-decoration: none;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    transition: all .5 ease-in-out;
+        
+                    &:hover{
+                    color: var(--secondary-color);
+                    }
+
+                }
             }
         }
+        @media screen and (min-width: 900px) {
+            display: none;
+        }
+    }
+    @media screen and (min-width: 900px) {
+        display: none;
     }
 }
