@@ -1,0 +1,135 @@
+.app__navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255, .25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: rgba(255,255,255, .25);
+    position: fixed;
+    z-index: 2;
+}
+
+.app__navbar-logo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img{
+        width: 90px;
+        height: 20px;
+        @media screen and (min-width: 2000px) {
+            width: 100px;
+            height: 40px;
+        }
+    }
+}
+
+.app__navbar-links{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li{
+        margin: 0 1rem;
+        cursor: pointer;
+        flex-direction: column;
+
+        div{
+           width: 5px;
+           height: 5px;
+           background: transparent;
+           border-radius: 50%;
+           margin: 5px;
+        }
+
+        a{
+            color: var(--grey-color);
+            text-decoration: none;
+            flex-direction: column;
+            text-transform: uppercase;
+            transition: all .5 ease-in-out;
+            font-weight: 500;
+
+            &:hover{
+            color: var(--secondary-color);
+            }
+        }
+        &:hover{
+            div{
+                background: var(--secondary-color);
+            }
+        }
+    }
+    @media screen and (max-width: 900px) {
+        display: none;
+    }
+}
+
+.app__navbar-menu{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-color);
+
+    svg{
+        width: 70%;
+        height: 70%;
+        color: var(--white-color);
+    }
+
+    div{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+
+        padding: 1rem;
+        width: 80%;
+        height: 100vh;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        flex-direction: column;
+
+        background-image: url(../assets/bgWhite.png);
+        background-color: var(--white-color);
+        background-size: cover;
+        background-repeat: repeat;
+
+        box-shadow: 0 0 20px rgba(168, 168, 168, 0.45);
+
+        svg{
+            width: 70px;
+            height: 70px;
+            color: var(--secondary-color);
+            margin: .5rem 1rem;
+        }
+
+        ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+
+            li{
+                margin: 1rem;
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@ import { About, Footer, Headers, Skills, Testimonials, Work  } from './container
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Navbar/>
       <Headers/>
       <About/>
