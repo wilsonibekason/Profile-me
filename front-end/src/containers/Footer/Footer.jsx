@@ -5,35 +5,38 @@ import './Footer.scss'
 import { images } from '../../constants';
 
 const Footer = () => {
-  const [formData, setFormData] = useState({name: '', email: '', message: ''} );
+  const [formData, setFormData] = useState({ name: '', email: '', message: ''});
   
-   
-  const [handleSubmit, setHandleSubmit] = useState(false);
+
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const {name, email, message} = formData;
-  
+    
+  const {username, email, message} = formData;
+    
   const handleChangeInput = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setFormData({...formData, [name]: value});
-  }
+  };
 
-  const handleSubmitBtn = () => {
+  const handleSubmit = () => {
     setLoading(true);
-    const contacts = {
-      _type: 'contacts',
+
+    const contact = {
+      _type: 'contact',
       name: formData.username,
       email: formData.email,
       message: formData.message,
-    }
+    };
 
-    client.create(contacts).then((data) => {
+    client.create(contact)
+    .then(() => {
       setLoading(false);
-      setHandleSubmit(true)
-    }).catch((err) => {
-      console.log(err);
+      setIsFormSubmitted(true);
     })
-  }
+    .catch((err) => console.log(err));
+  };
+
+ 
 
   return (
     <>
@@ -48,10 +51,10 @@ const Footer = () => {
          <a href="tel: +234 8139133401" className='p-text'>tel: +234 8139133401</a>
       </div>
     </div>
-        {!handleSubmit ? (
+        {!isFormSubmitted ? (
           <div className="app__footer-form app__flex">
           <div className="app__flex">
-              <input className='p-text' type='text' placeholder='enter your name' value={name} onChange={handleChangeInput} name='name'/>
+              <input className='p-text' type='text' placeholder='enter your name' value={username} onChange={handleChangeInput} name='username'/>
           </div>
           <div className="app__flex">
               <input className='p-text' type='text' placeholder='enter your email' value={email} onChange={handleChangeInput} name='email'/>
@@ -67,7 +70,7 @@ const Footer = () => {
             onChange={handleChangeInput}
             />
     
-            <button className='p-text' type='button' onClick={handleSubmitBtn}>{!loading ? 'Send Message' : 'Sending .. '}</button>
+            <button className='p-text' type='button' onClick={handleSubmit}>{!loading ? 'Send Message' : 'Sending .. '}</button>
           </div>
         </div>
         ) : (
